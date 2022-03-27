@@ -16,12 +16,11 @@ public class ExchangeOffice {
     public void start(){
 
         System.out.println("Welcome to best exchange office!");
-        //exchangeRateTable.printExchangeTable();
 
         while(checkIfShouldClose()) {
 
             Pair<BigDecimal, BigDecimal> pair = getUserRequest();
-            if(pair == null) continue;
+            if (pair == null) continue;
 
             BigDecimal convertedAmount = Calculator.exchange(pair.getKey(), pair.getValue());
             displayExchangeResult(convertedAmount);
@@ -39,37 +38,37 @@ public class ExchangeOffice {
         return new Pair<>(amount, rate);
     }
 
-    public boolean checkIfShouldClose(){
+    public boolean checkIfShouldClose() {
         System.out.println("Press enter to exchange (type 'q' to quit)");
         String cmd = scanner.nextLine();
-        if(cmd.equals("q")) System.out.println("Exchange office is closing...");
+        if (cmd.equals("q")) System.out.println("Exchange office is closing...");
         return !cmd.equals("q");
     }
 
-    private String getFromUser(String data){
+    private String getFromUser(String data) {
         System.out.printf("Enter %s: \n", data);
         return scanner.nextLine();
     }
 
-    private BigDecimal getRateForUserCurrency(String currency){
+    private BigDecimal getRateForUserCurrency(String currency) {
 
         BigDecimal rate = exchangeRateTable.getRateForCurrency(currency);
-        if(rate == null){
+        if (rate == null){
             System.out.println("Unsupported currency!");
         }
 
         return  rate;
     }
 
-    private BigDecimal convertUserStrToBigDecimal(String amountStr){
+    private BigDecimal convertUserStrToBigDecimal(String amountStr) {
 
         BigDecimal amount = Calculator.convertStrToBigDecimal(amountStr);
-        if(amount == null) {
+        if (amount == null) {
             System.out.println("Provide valid amount!");
             return null;
         }
 
-        if(amount.compareTo(BigDecimal.ZERO) <= 0){
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             System.out.println("Provide amount greater than 0!");
             return null;
         }

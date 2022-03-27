@@ -9,12 +9,12 @@ public class ExchangeRateTable {
         this.exchangeMap = exchangeMap;
     }
 
-    public boolean isExchangeMapCorrect(){
+    public boolean isExchangeMapCorrect() {
 
         final int currencyRequiredLength = 3;
 
-        for (Map.Entry<String, BigDecimal> entry : exchangeMap.entrySet()){
-            if(entry.getKey().length() != currencyRequiredLength ||
+        for (Map.Entry<String, BigDecimal> entry : exchangeMap.entrySet()) {
+            if (entry.getKey().length() != currencyRequiredLength ||
                     !containsOnlyUpperCaseCharacter(entry.getKey()) ||
                     entry.getValue().compareTo(BigDecimal.ZERO) <= 0) {
                 System.out.println("Exchange rate table incorrect!");
@@ -35,7 +35,7 @@ public class ExchangeRateTable {
         return false;
     }
 
-    public BigDecimal getRateForCurrency(String currency){
+    public BigDecimal getRateForCurrency(String currency) {
         return exchangeMap.get(currency);
     }
 }

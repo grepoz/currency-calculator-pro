@@ -3,7 +3,7 @@ import java.math.RoundingMode;
 
 public class Calculator {
 
-    public static BigDecimal exchange(BigDecimal amount, BigDecimal rate){
+    public static BigDecimal exchange(BigDecimal amount, BigDecimal rate) {
         BigDecimal convertedAmount = null;
         try {
             convertedAmount = amount.multiply(rate);
@@ -14,7 +14,7 @@ public class Calculator {
         return convertedAmount;
     }
 
-    public static BigDecimal roundAmount(BigDecimal amount){
+    public static BigDecimal roundAmount(BigDecimal amount) {
 
         try {
             if(amount != null) {
@@ -28,13 +28,13 @@ public class Calculator {
         return amount;
     }
 
-    public static BigDecimal convertStrToBigDecimal(String amountStr){
+    public static BigDecimal convertStrToBigDecimal(String amountStr) {
 
         BigDecimal amount;
         try {
             amount = new BigDecimal(amountStr);
         }
-        catch (NumberFormatException e){
+        catch (NumberFormatException e) {
             return null;
         }
 
