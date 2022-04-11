@@ -4,13 +4,11 @@ import java.math.RoundingMode;
 public class Calculator {
 
     public static BigDecimal exchange(BigDecimal amount, BigDecimal rate) {
-        BigDecimal convertedAmount = null;
-        try {
-            convertedAmount = amount.multiply(rate);
-            convertedAmount = roundAmount(convertedAmount);
-        } catch (Exception e) {
-            System.out.println("Cannot exchange (multiply amount with rate)!");
-        }
+        BigDecimal convertedAmount;
+
+        convertedAmount = amount.multiply(rate);
+        convertedAmount = roundAmount(convertedAmount);
+
         return convertedAmount;
     }
 

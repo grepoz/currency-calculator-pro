@@ -42,6 +42,7 @@ public class ExchangeOffice {
         System.out.println("Press enter to exchange (type 'q' to quit)");
         String cmd = scanner.nextLine();
         if (cmd.equals("q")) System.out.println("Exchange office is closing...");
+
         return !cmd.equals("q");
     }
 

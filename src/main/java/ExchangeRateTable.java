@@ -11,12 +11,8 @@ public class ExchangeRateTable {
 
     public boolean isExchangeMapCorrect() {
 
-        final int currencyRequiredLength = 3;
-
         for (Map.Entry<String, BigDecimal> entry : exchangeMap.entrySet()) {
-            if (entry.getKey().length() != currencyRequiredLength ||
-                    !containsOnlyUpperCaseCharacter(entry.getKey()) ||
-                    entry.getValue().compareTo(BigDecimal.ZERO) <= 0) {
+            if (!isCurrencyCorrect(entry.getKey()) || !isRateCorrect(entry.getValue())) {
                 System.out.println("Exchange rate table incorrect!");
                 return false;
             }
@@ -25,14 +21,21 @@ public class ExchangeRateTable {
         return true;
     }
 
-    private boolean containsOnlyUpperCaseCharacter(String string) {
-        for (int i = 0; i < string.length(); i++) {
-            if (Character.isUpperCase(string.charAt(i))) {
-                return true;
-            }
-        }
+    private boolean isCurrencyCorrect(String currency) {
+        return hasRequiredLength(currency) && isUpperCase(currency);
+    }
 
-        return false;
+    private boolean hasRequiredLength(String currency) {
+        final int currencyRequiredLength = 3;
+        return currency.length() == currencyRequiredLength;
+    }
+
+    private boolean isUpperCase(String string) {
+        return string.equals(string.toUpperCase());
+    }
+
+    private boolean isRateCorrect(BigDecimal rate) {
+        return rate.compareTo(BigDecimal.ZERO) > 0;
     }
 
     public BigDecimal getRateForCurrency(String currency) {
